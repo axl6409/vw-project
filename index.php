@@ -4,7 +4,7 @@
 
 		<main id="main" class="main_container">	
 
-			<section id="intro slide" class="intro" data-background="#fff">
+			<section id="intro " class="intro slide" data-background="#3498db">
 
 				<div class="home_section_head">
 					<h2>La création de votre site web sur mesure !</h2>
@@ -55,7 +55,7 @@
 			</section>
 	
 
-			<section id="projects slide" class="projects" data-background="#5FFBF1">
+			<section id="projects " class="projects slide" data-background="#27ae60">
 				
 				<div class="home_section_head">
 					<h2>Mes Derniers Projets</h2>
@@ -101,7 +101,7 @@
 			</section> <!-- container end -->
 
 
-			<section id="services slide" class="services" data-background="#86A8E7">
+			<section id="services " class="services slide" data-background="#e74c3c">
 
 				<div class="home_section_head">
 					<h2>Quels Services ?</h2>
@@ -143,7 +143,7 @@
 
 			</section>
 
-			<section id="contact slide" class="contact" data-background="#D16BA5">
+			<section id="contact " class="contact slide" data-background="#e67e22">
 				
 				<div class="home_section_head">
 					<h2>Pour me contacter</h2>

@@ -20,19 +20,6 @@ function mytheme_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'mytheme_customize_register' );
 
 
-Kirki::add_field(
-	'theme_slug',
-	array(
-	'settings' => 'text_field_name',
-	'label' => __( 'My Text Field', 'translation_domain' ),
-	'section' => 'my_section',
-	'type' => 'text',
-	'priority' => 10,
-	'default' => 'some default value for text field'
-	)
-);
-
-
 
 function my_custom_text_settings( $wp_customize ) {
 
