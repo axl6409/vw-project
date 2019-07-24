@@ -8,13 +8,13 @@
 		<meta name="author" content="">
 		<title>Exemple de thème WordPress</title>
 		<!-- Ajout d'une nouvelle feuille de style qui sera spécifique à notre thème -->
-
+		
 		<?php wp_head(); ?>
 	</head>
 
-	<body>
+	<body data-hijacking="off" data-animation="scaleDown">
 
-		<header class="header navbar fixed-top navbar-dark bg-dark ss-style-triangles">
+		<header id="header" class="header navbar fixed-top navbar-dark bg-dark ss-style-triangles">
 			
 			<a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
 				<?php
@@ -34,20 +34,30 @@
 		
 		</header>
 
-		<section id="hero" class="home_hero slide" data-background="rgba(132,94,194,0.5)">		
+		<nav>
+			<ul class="cd-vertical-nav">
+				<li><a href="#0" class="cd-prev inactive">Next</a></li>
+				<li><a href="#0" class="cd-next">Prev</a></li>
+			</ul>
+		</nav> <!-- .cd-vertical-nav -->
+
+		<section id="homeSection hero" class="home_hero cd-section slide" data-background="#000">		
 
 			<div class="home_hero_text">
 				<h1 class="hero_title text-pop-up-top">Vector Web</h1>
 
 				<p class="hero_description tracking-in-contract-bck">Création de votre site web</p>
-			</div>
 
-			<div id="section1" class="slide" data-background="#845EC2">
-			  	<svg width="100%" height="100" viewBox="0 0 100 102" preserveAspectRatio="none">
-			  		<path d="M0 0 L50 95 L100 0 V100 H0" fill="rgba(0,0,0,0.0)" />
-			    	<path d="M0 20 L50 95 L100 20 V100 H0" fill="rgba(0,0,0,0.0)" />
-			    	<path d="M0 40 L50 95 L100 40 V100 H0" fill="rgba(0,0,0,0.0)" />
-			  	</svg>
+			</div>
+			
+			<div class="demo-content svg-attribute-demo">
+				<svg width="128" height="128" viewBox="0 0 128 128">
+					<filter id="displacementFilter">
+						<feTurbulence type="turbulence" baseFrequency=".05" numOctaves="2" result="turbulence" style="transform: scale(1);"></feTurbulence>
+						<feDisplacementMap in2="turbulence" in="SourceGraphic" scale="15" xChannelSelector="R" yChannelSelector="G"></feDisplacementMap>
+					</filter>
+					<polygon points="" style="filter: url('#displacementFilter'); transform: scale(1);"  fill="currentColor"></polygon>
+				</svg>
 			</div>
 
 			<div class="hero_down_btn">
