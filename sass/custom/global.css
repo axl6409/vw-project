@@ -184,6 +184,44 @@ table {
     text-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   }
 }
+/* HEADER */
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+/* LOGO */
+.header_logo {
+  margin-left: 50px;
+  width: 10%;
+}
+
+.header_logo img {
+  width: 45%;
+  padding: 10px 10px 10px;
+}
+
+/* ACCOUNT BUTTON */
+.account_button {
+  width: 10%;
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* NAVIGATION */
+.nav_container {
+  width: 40%;
+  height: 30px;
+  margin-top: 40px;
+}
+
+.nav_container ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -198,7 +236,6 @@ section {
 
 body {
   transition: background 1s ease;
-  background: #3498db;
 }
 
 p {
@@ -247,58 +284,6 @@ a {
   font-size: 40px;
 }
 
-/* HEADER */
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-
-/* LOGO */
-.header_logo {
-  margin-left: 50px;
-  width: 10%;
-}
-
-.header_logo img {
-  width: 45%;
-  padding: 10px 10px 10px;
-}
-
-/* ACCOUNT BUTTON */
-.account_button {
-  width: 10%;
-  margin-top: 40px;
-  text-align: center;
-}
-
-#section1 {
-  background-size: cover;
-  height: 200px;
-}
-
-svg {
-  position: absolute;
-  bottom: -10px;
-  left: 0;
-  width: 100%;
-  height: 150px;
-  display: block;
-}
-
-/* NAVIGATION */
-.nav_container {
-  width: 40%;
-  height: 30px;
-  margin-top: 40px;
-}
-
-.nav_container ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 /* HOME HERO */
 .home_hero {
   width: 100%;
@@ -340,16 +325,6 @@ svg {
   padding: 15px 5px 15px;
 }
 
-.svg-logo-home {
-  width: 100%;
-  height: 350px;
-  text-align: center;
-}
-
-polygon {
-  color: black;
-}
-
 .hero_down_btn {
   position: absolute;
   bottom: 50px;
@@ -362,13 +337,20 @@ polygon {
   color: #000;
 }
 
-.demo-content {
+.home_svg_content {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 70%;
+  height: 100%;
+  text-align: center;
+}
+
+.home_svg_content svg {
+  position: absolute;
+  bottom: 20%;
+  left: 46%;
 }
 
 /* MAIN HOME PAGE */

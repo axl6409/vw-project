@@ -52,3 +52,4 @@ var svgAttr = function() {
 }
 
 $(window).ready(svgAttr)
+

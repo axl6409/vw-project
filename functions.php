@@ -242,36 +242,13 @@ function add_my_post_types_to_query( $query ) {
 
 
 
-if ( ! function_exists( 'vectorweb_post_thumbnail' ) ) :
-    /**
-     * Displays an optional post thumbnail.
-     *
-     * Wraps the post thumbnail in an anchor element on index views, or a div
-     * element when on single views.
-     */
-    function vectorweb_post_thumbnail() {
-        if ( ! vectorweb_can_show_post_thumbnail() ) {
-            return;
-        }
+function theme_custom_logo() {
+    
+    add_theme_support( 'custom-logo', array(
+        'height'      => 100,
+        'width'       => 400,
+        'flex-width' => true,
+    ) );
 
-        if ( is_singular() ) :
-            ?>
-
-            <figure class="post-thumbnail">
-                <?php the_post_thumbnail(); ?>
-            </figure><!-- .post-thumbnail -->
-
-            <?php
-        else :
-            ?>
-
-        <figure class="post-thumbnail">
-            <a class="post-thumbnail-inner" href="<?php the_permalink(); ?>" aria-hidden="true" tabindex="-1">
-                <?php the_post_thumbnail( 'post-thumbnail' ); ?>
-            </a>
-        </figure>
-
-            <?php
-        endif; // End is_singular().
-    }
-endif;
+}
+add_action( 'after_setup_theme', 'theme_custom_logo' );
