@@ -11,18 +11,16 @@
 
 
  	// Styles
-
- 	wp_enqueue_style( 'style-global', get_template_directory_uri() . '/sass/custom/global.css',false,'1.1','all');
  	wp_enqueue_style( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
  	wp_enqueue_style( 'font-awesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
+    wp_enqueue_style( 'style-global', get_template_directory_uri() . '/sass/custom/global.css',false,'1.1','all');
  	// Scripts
 	wp_deregister_script('jquery');
 	wp_register_script('jquery', ("https://code.jquery.com/jquery-3.4.1.js"), false, '3.4.1');
  	wp_enqueue_script('bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', null, null, true );
  	wp_enqueue_script('scrollie', get_template_directory_uri() . '/js/lib/jquery.scrollie.min.js', array( 'jquery' ) );
     wp_enqueue_script('anime-js', get_template_directory_uri() . '/assets/plugins/anime-master/lib/anime.min.js', array( 'jquery' ) );
-        wp_enqueue_script( 'modernizr-js', get_template_directory_uri() . '/js/lib/modernizr.js', array( 'jquery' ), 1.1, true);
+    wp_enqueue_script( 'modernizr-js', get_template_directory_uri() . '/js/lib/modernizr.js', array( 'jquery' ), 1.1, true);
  	wp_enqueue_script( 'main-js', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), 1.1, true);
 
  }
@@ -246,9 +244,17 @@ function theme_custom_logo() {
     
     add_theme_support( 'custom-logo', array(
         'height'      => 100,
-        'width'       => 400,
+        'width'       => 300,
         'flex-width' => true,
+        'flex-width' => true,
+        'header-text'=> array( 'site-title', 'site-description' ),
     ) );
 
 }
 add_action( 'after_setup_theme', 'theme_custom_logo' );
+
+
+
+
+
+

@@ -2,46 +2,54 @@
 			
 	<?php get_header(); ?>
 
+		
 
 		<section id="homeSection intro " class="intro cd-section slide" data-background="#000">
 
-			<div class="home_section_head">
-				<h2 class="text-shadow-drop-bottom">La création de votre site web sur mesure !</h2>		
-			</div>
-
 			<div class="intro_container">
 
-				<div class="col-md-6">
+				<div class="intro_head">
+					<h2 class="">La création de votre site web sur mesure !</h2>		
+				</div>
+
+				<div class="intro_blocks">
+
+					<div class="">
 
 						<p class="intro_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio assumenda excepturi accusantium dignissimos ad suscipit quisquam minima quasi quaerat vitae. Impedit sapiente saepe, ducimus magni alias odit eaque assumenda molestiae.</p>
-					
-				</div>
-			</div> <!-- container end -->
-
-			<div class="">
-				
-				<div class="creation_block_l">
-					<ul>
-						<li></li>
-						<li></li>
-					</ul>
-				</div>
-
-				<div class="creation_block_c">
-					<div>
-						<img src="" alt="">
+						
 					</div>
-				</div>
 
-				<div class="creation_block_r">
-					<ul>
-						<li></li>
-						<li></li>
-					</ul>
+					<div class="">
+					
+						<div class="creation_block_l">
+							<ul>
+								<li></li>
+								<li></li>
+							</ul>
+						</div>
 
-				</div>
+						<div class="creation_block_c">
+							<div>
+								<img src="" alt="">
+							</div>
+						</div>
 
+						<div class="creation_block_r">
+							<ul>
+								<li></li>
+								<li></li>
+							</ul>
+
+						</div>
+
+					</div>
+				</div> <!-- intro container end -->
+
+				
 			</div>
+
+			
 
 
 		</section>
