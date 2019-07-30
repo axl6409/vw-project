@@ -12,7 +12,7 @@
 
  	// Styles
  	wp_enqueue_style( 'bootstrap', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
- 	wp_enqueue_style( 'font-awesome', 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+ 	wp_enqueue_style('font-awesome', 'https://use.fontawesome.com/releases/v5.10.0/css/all.css');
     wp_enqueue_style( 'style-global', get_template_directory_uri() . '/sass/custom/global.css',false,'1.1','all');
  	// Scripts
 	wp_deregister_script('jquery');

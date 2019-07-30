@@ -4,53 +4,51 @@
 
 		
 
-		<section id="homeSection intro " class="intro cd-section slide" data-background="#000">
+		<section id="homeSection intro" class="intro cd-section slide">
+			
+			<div class="intro_head">
 
-			<div class="intro_container">
-
-				<div class="intro_head">
-					<h2 class="">La création de votre site web sur mesure !</h2>		
+				<div class="container">
+					<h1 class="intro_head_title">Titre de la section</h1>
+					<p class="intro_head_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas omnis dolore esse impedit magni distinctio, sapiente sit, sequi tempora autem optio in dolorem totam minima odit temporibus quas a fugit.</p>
 				</div>
-
-				<div class="intro_blocks">
-
-					<div class="">
-
-						<p class="intro_text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio assumenda excepturi accusantium dignissimos ad suscipit quisquam minima quasi quaerat vitae. Impedit sapiente saepe, ducimus magni alias odit eaque assumenda molestiae.</p>
-						
-					</div>
-
-					<div class="">
-					
-						<div class="creation_block_l">
-							<ul>
-								<li></li>
-								<li></li>
-							</ul>
-						</div>
-
-						<div class="creation_block_c">
-							<div>
-								<img src="" alt="">
-							</div>
-						</div>
-
-						<div class="creation_block_r">
-							<ul>
-								<li></li>
-								<li></li>
-							</ul>
-
-						</div>
-
-					</div>
-				</div> <!-- intro container end -->
-
 				
 			</div>
 
-			
+			<div class="intro_content">
 
+				<div class="intro_img">
+				
+					<img src="wp-content/themes/vectorweb/assets/images/screens-1.png" alt="">
+
+				</div>
+
+				<div class="intro_content_icons">
+					<ul>
+						<li class="list_items">
+							<a href="#">
+								<i class="fas fa-pencil-ruler"></i>
+							</a>
+							
+						</li>
+						<li class="list_items">
+							<a href="#">
+								<i class="fas fa-mobile-alt"></i>
+							</a>
+							
+						</li>
+						<li class="list_items">
+							<a href="#">
+								<i class="fas fa-cog"></i>
+							</a>
+							
+						</li>
+					</ul>
+				</div>
+
+
+			</div>
+			
 
 		</section>
 
