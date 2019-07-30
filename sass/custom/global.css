@@ -286,7 +286,7 @@ h1, h2, h3, h4, a {
 }
 
 p {
-  font-family: "Josefin Sans", sans-serif;
+  font-family: "Economica", sans-serif;
 }
 
 .pos-fix {
@@ -370,6 +370,10 @@ p {
   justify-content: center;
 }
 
+.intro_list {
+  font-size: 45px;
+}
+
 /* HOME HERO */
 .home_hero {
   width: 100%;
@@ -445,11 +449,13 @@ p {
   width: 100%;
   margin-bottom: 5%;
   padding: 10px 100px 10px 100px;
+  display: flex;
+  flex-direction: row;
 }
 
 .projects_head {
   text-align: center;
-  width: 100%;
+  width: 25%;
   padding: 15px 5px 15px;
 }
 

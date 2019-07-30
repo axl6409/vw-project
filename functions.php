@@ -257,4 +257,97 @@ add_action( 'after_setup_theme', 'theme_custom_logo' );
 
 
 
+/*
+ * Enable support for Post Thumbnails on posts and pages.
+ *
+ * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
+ */
+add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 604, 270 );
+add_image_size( 'nisarg-full-width', 1038, 576, true );
 
+
+/**
+ *  Display featured image of the post
+ */
+function vw_featured_image_disaplay() {
+    if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) {  // check if the post has a Post Thumbnail assigned to it. ?>
+        <div class="featured-image">
+            <?php if( !is_single() ) { ?>
+            <a href="<?php the_permalink(); ?>" rel="bookmark">
+            <?php } 
+            the_post_thumbnail('nisarg-full-width'); ?>
+            <?php if( !is_single() ) { ?>
+            </a> <?php } ?>        
+        </div>
+        <?php 
+    } 
+}
+
+
+if ( function_exists( 'add_theme_support' ) ) {
+    add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( 150, 150, true ); // default Featured Image dimensions (cropped)
+ 
+    // additional image sizes
+    // delete the next line if you do not need additional image sizes
+    add_image_size( 'category-thumb', 300, 9999 ); // 300 pixels wide (and unlimited height)
+ }
+
+
+
+
+ /**
+ * Add postMessage support for site title and description for the Theme Customizer.
+ *
+ * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+ */
+function vw_customize_register( $wp_customize ) {
+
+    //Add section for post option
+    $wp_customize->add_section(
+        'post_options',
+        array(
+            'title'     => __('Post Options','nisarg'),
+            'priority'  => 201,
+        )
+    );
+
+    $wp_customize->add_setting('post_display_option', array(
+        'default'        => 'post-excerpt',
+        'sanitize_callback' => 'nisarg_sanitize_post_display_option',
+        'transport'         => 'refresh'
+    ));
+ 
+    $wp_customize->add_control('post_display_types', array(
+        'label'      => __('How would you like to dipaly a post on post listing page?', 'nisarg'),
+        'section'    => 'post_options',
+        'settings'   => 'post_display_option',
+        'type'       => 'radio',
+        'choices'    => array(
+            'post-excerpt' => __('Post excerpt','nisarg'),
+            'full-post' => __('Full post','nisarg'),            
+        ),
+    ));
+    
+}
+add_action( 'customize_register', 'vw_customize_register' );
+
+
+
+if ( ! function_exists( 'nisarg_sanitize_post_display_option' ) ) :
+/**
+ * Sanitization callback for post display option.
+ *
+ *
+ * @param string $value post display style.
+ * @return string post display style.
+ */
+
+function nisarg_sanitize_post_display_option( $value ) {
+    if ( ! in_array( $value, array( 'post-excerpt', 'full-post' ) ) )
+        $value = 'post-excerpt';
+    
+    return $value;
+}
+endif; // nisarg_sanitize_post_display_option

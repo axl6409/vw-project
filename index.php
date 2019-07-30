@@ -25,19 +25,19 @@
 
 				<div class="intro_content_icons">
 					<ul>
-						<li class="list_items">
+						<li class="list_items intro_list">
 							<a href="#">
 								<i class="fas fa-pencil-ruler"></i>
 							</a>
 							
 						</li>
-						<li class="list_items">
+						<li class="list_items intro_list">
 							<a href="#">
 								<i class="fas fa-mobile-alt"></i>
 							</a>
 							
 						</li>
-						<li class="list_items">
+						<li class="list_items intro_list">
 							<a href="#">
 								<i class="fas fa-cog"></i>
 							</a>
@@ -55,38 +55,29 @@
 
 		<section id="homeSection projects " class="projects cd-section slide" data-background="#fff">
 			
-			<div class="home_section_head">
+			<div class="projects_head">
 				<h2>Mes Derniers Projets</h2>
 			</div>
-			
 
-		
 			<div class="container">
-				
-				<div class="row">
+
+				<div class="projects_grid">
 	
-				<?php 
-				$args = array( 'post_type' => 'projects', 'posts_per_page' => 10 );
-				$the_query = new WP_Query( $args ); 
-				?>
+					<?php $the_query = new WP_Query( array( 'post_type' => 'project', 'posts_per_page' => '4' ) ); ?>
 
-				<?php if ( $the_query->have_posts() ) { ?>
-					
-					<?php while ( $the_query->have_posts() ) { 
-						$the_query->the_post(); ?>
+						<!-- Start The WP Loop -->
+						<?php while ( $the_query -> have_posts() ) : 
+								$the_query -> the_post(); ?>
 
-						<h2><?php the_title(); ?></h2>
-						<div class="entry-content">
-							<?php the_content(); ?> 
-						</div>
-						<?php wp_reset_postdata(); ?>
-					
-					<?php } ?>
-
-				<?php } else { ?>
-						<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-
-				<?php } ?>
+						       <!-- Display the post excerpt -->
+								<?php $post_display_option = get_theme_mod( 'post_display_option', 'post-excerpt' );
+								if ( 'post-excerpt' === $post_display_option ) {
+									get_template_part( 'template-parts/content', 'excerpt' );
+								} else {
+									get_template_part( 'template-parts/content', get_post_format() );
+								}
+								?>
+						<?php endwhile; wp_reset_query(); ?>
 
 
 				</div> <!-- row end -->	
