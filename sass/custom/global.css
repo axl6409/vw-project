@@ -588,8 +588,7 @@ p {
 
 .nav_container ul {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .menu_open {

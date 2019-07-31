@@ -1,6 +1,170 @@
 <?php
 
 
+
+
+function custom_header_setup() {
+
+    /**
+     * Filter custom-header support arguments.
+     *
+     * @since My Theme 1.0
+     *
+     * @param array $args {
+     *     An array of custom-header support arguments.
+     *
+     *     @type string $default-image          Default image of the header.
+     *     @type int    $width                  Width in pixels of the custom header image. Default 954.
+     *     @type int    $height                 Height in pixels of the custom header image. Default 1300.
+     *     @type string $flex-height            Flex support for height of header.
+     *     @type string $video                  Video support for header.
+     *     @type string $wp-head-callback       Callback function used to styles the header image and text
+     *                                          displayed on the blog.
+     * }
+     */
+    add_theme_support(
+        'custom-header',
+        apply_filters(
+            'custom_header_args',
+            array(
+                'default-image'    => get_parent_theme_file_uri( '/assets/img/header.jpg' ),
+                'width'            => 2000,
+                'height'           => 1200,
+                'flex-height'      => true,
+                'video'            => true,
+                'wp-head-callback' => 'mytheme_header_style',
+            )
+        )
+    );
+
+    register_default_headers(
+        array(
+            'default-image' => array(
+                'url'           => '%s/assets/img/header.jpg',
+                'thumbnail_url' => '%s/assets/img/header.jpg',
+                'description'   => __( 'Default Header Image', 'mytheme' ),
+            ),
+        )
+    );
+}
+add_action( 'after_setup_theme', 'custom_header_setup' );
+
+if ( ! function_exists( 'mytheme_header_style' ) ) :
+    /**
+     * Styles the header image and text displayed on the blog.
+     *
+     * @see mytheme_custom_header_setup().
+     */
+    function mytheme_header_style() {
+        $header_text_color = get_header_textcolor();
+
+        // If no custom options for text are set, let's bail.
+        // get_header_textcolor() options: add_theme_support( 'custom-header' ) is default, hide text (returns 'blank') or any hex value.
+        if ( get_theme_support( 'custom-header', 'default-text-color' ) === $header_text_color ) {
+            return;
+        }
+
+        // If we get this far, we have custom styles. Let's do this.
+        ?>
+        <style id="mytheme-custom-header-styles" type="text/css">
+        <?php
+        // Has the text been hidden ?
+        if ( 'blank' === $header_text_color ) :
+            ?>
+            .site-title,
+            .site-description {
+                position: absolute;
+                clip: rect(1px, 1px, 1px, 1px);
+            }
+            <?php
+            // If the user ha set a custom color for the text use that
+        else :
+            ?>
+            .site-title a,
+            .colors-dark .site-title a,
+            .colors-custom .site-title a,
+            body.has-header-image .site-title a,
+            body.has-header-video .site-title a,
+            body.has-header-image.colors-dark .site-title a,
+            body.has-header-video.colors-dark .site-title a,
+            body.has-header-image.colors-custom .site-title a,
+            body.has-header-video.colors-custom .site-title a,
+            .site-description,
+            .colors-dark .site-description,
+            .colors-custom .site-description,
+            body.has-header-image .site-description,
+            body.has-header-video .site-description,
+            body.has-header-image.colors-dark .site-description,
+            body.has-header-video.colors-dark .site-description,
+            body.has-header-image.colors-custom .site-description,
+            body.has-header-video.colors-custom .site-description {
+                color: #<?php echo esc_attr( $header_text_color ); ?>;
+            }
+        <?php endif; ?>
+        </style>
+
+        <?php
+    }
+endif;
+
+
+
+
+function mytheme_setup() {
+
+    // This theme uses wp_nav_menu() in two locations.
+    register_nav_menus(
+        array(
+            'top'    => __( 'Top Menu', 'mytheme' ),
+            'social' => __( 'Social Links Menu', 'mytheme' ),
+        )
+    );
+
+    /*
+     * Switch default core markup for search form, comment form, and comments
+     * to output valid HTML5.
+     */
+    add_theme_support(
+        'html5',
+        array(
+            'comment-form',
+            'comment-list',
+            'gallery',
+            'caption',
+        )
+    );
+
+    /*
+     * Enable support for Post Formats.
+     *
+     * See: https://codex.wordpress.org/Post_Formats
+     */
+    add_theme_support(
+        'post-formats',
+        array(
+            'aside',
+            'image',
+            'video',
+            'quote',
+            'link',
+            'gallery',
+            'audio',
+        )
+    );
+
+    add_theme_support( 'custom-logo', array(
+        'height'      => 100,
+        'width'       => 300,
+        'flex-width' => true,
+        'flex-width' => true,
+        'header-text'=> array( 'site-title', 'site-description' ),
+    ) );
+
+}
+add_action( 'after_setup_theme', 'mytheme_setup' );
+
+
+
 /**
  *
  Enqueue Scripts Actions
@@ -242,13 +406,7 @@ function add_my_post_types_to_query( $query ) {
 
 function theme_custom_logo() {
     
-    add_theme_support( 'custom-logo', array(
-        'height'      => 100,
-        'width'       => 300,
-        'flex-width' => true,
-        'flex-width' => true,
-        'header-text'=> array( 'site-title', 'site-description' ),
-    ) );
+
 
 }
 add_action( 'after_setup_theme', 'theme_custom_logo' );
@@ -351,3 +509,21 @@ function nisarg_sanitize_post_display_option( $value ) {
     return $value;
 }
 endif; // nisarg_sanitize_post_display_option
+
+
+
+
+
+
+
+
+
+/**
+ * Implement the Custom Header feature.
+ */
+require get_parent_theme_file_path( '/inc/custom-header.php' );
+
+/**
+ * SVG Icons related functions.
+ */
+require get_template_directory() . '/inc/icon-functions.php';

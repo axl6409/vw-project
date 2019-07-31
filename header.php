@@ -14,7 +14,7 @@
 
 	<body id="body" data-hijacking="off" data-animation="scaleDown">
 		
-
+		
 
 		<!-- LOADER -->
 		<?php
@@ -60,7 +60,14 @@
 			</div>		
 
 			<nav id="navigationMenu" class="nav_container" role="navigation">
-				<?php wp_nav_menu( array( 'theme_location' => 'menu-principal' ) ); ?>
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'top',
+						'menu_id'        => 'top',
+					)
+				);
+				?>
 				<div class="client">
 					<button type="button" class="client_button">
 						<a class="account_button_link" href="vw-admin/vw-admin.php">Compte Client</a>
@@ -73,8 +80,8 @@
 		
 
 		<section id="homeSection hero" class="home_hero cd-section slide">
-	
-
+			
+			
 			<div class="home_hero_text">
 				<h1 class="hero_title text-pop-up-top">Vector Web</h1>
 
@@ -82,8 +89,6 @@
 
 			</div>
 			
-			
-
 
 			<div class="hero_down_btn">
 				
