@@ -2,6 +2,10 @@
 			
 	<?php get_header(); ?>
 
+
+
+	<?php get_template_part( 'template-parts/site/site', 'hero' ); ?>
+
 		
 
 		<section id="homeSection intro" class="intro cd-section slide">
@@ -51,7 +55,38 @@
 			
 
 		</section>
+		
+		<section id="homeSection services " class="services cd-section slide" data-background="#000">
 
+			<div class="home_section_head">
+				<h2>Quels Services ?</h2>
+			</div>
+			
+			<div class="container">
+
+				<div class="row">
+					
+					<?php $the_query = new WP_Query( array( 'post_type' => 'services') ); ?>
+
+						<!-- Start The WP Loop -->
+						<?php while ( $the_query -> have_posts() ) : 
+								$the_query -> the_post(); ?>
+
+						       <!-- Display the post excerpt -->
+								<?php $post_display_option = get_theme_mod( 'post_display_option', 'post-excerpt' );
+								if ( 'post-excerpt' === $post_display_option ) {
+									get_template_part( 'template-parts/content/content', 'excerpt' );
+								} else {
+									get_template_part( 'template-parts/content/content', get_post_format() );
+								}
+								?>
+						<?php endwhile; wp_reset_query(); ?>
+
+				</div>
+
+			</div>
+
+		</section>
 
 		<section id="homeSection projects " class="projects cd-section slide" data-background="#fff">
 			
@@ -87,47 +122,7 @@
 		</section> <!-- container end -->
 
 
-		<section id="homeSection services " class="services cd-section slide" data-background="#000">
-
-			<div class="home_section_head">
-				<h2>Quels Services ?</h2>
-			</div>
-			
-			<div class="container">
-
-				<div class="row">
-					
-					<?php 
-					$args = array( 'post_type' => 'service', 'posts_per_page' => 10 );
-					$the_query = new WP_Query( $args ); 
-					?>
-
-					<?php if ( $the_query->have_posts() ) { ?>
-						
-						<?php while ( $the_query->have_posts() ) { 
-							$the_query->the_post(); ?>
-
-							<h2><?php the_title(); ?></h2>
-							<div class="entry-content">
-
-								<?php the_content(); ?> 
-
-							</div>
-
-							<?php wp_reset_postdata(); ?>
-						
-						<?php } ?>
-
-					<?php } else { ?>
-							<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
-
-					<?php } ?>
-
-				</div>
-
-			</div>
-
-		</section>
+		
 
 		<section id="homeSection contact " class="contact cd-section slide" data-background="#fff">
 			

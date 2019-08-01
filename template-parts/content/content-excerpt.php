@@ -1,51 +1,48 @@
 <?php
 /**
- * Template part for displaying posts.
+ * Template part for displaying posts with excerpts
  *
- * Display excerpt on home page
+ * Used in Search Results and for Recent Posts in Front Page panels.
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ *
+ * @package WordPress
+ * @subpackage Twenty_Seventeen
+ * @since 1.0
+ * @version 1.2
  */
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" class="cstm_post_main" <?php post_class( 'post-content' ); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php
-	if ( is_sticky() && is_home() && ! is_paged() ) {
-		printf( '<span class="sticky-post">%s</span>');
-	} ?>
-
-<?php the_post_thumbnail(); ?>
-
-	<div class="cstm_post_content">
-		
-		<header class="entry-header">
-
-			<span class="screen-reader-text"><?php the_title();?></span>
-
-			<?php if ( is_single() ) : ?>
-				<h1 class="entry-title"><?php the_title(); ?></h1>
-			<?php else : ?>
-				<h2 class="entry-title">
-					<a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a>
-				</h2>
-			<?php endif; // is_single() ?>-
-
-			<?php if ( 'post' == get_post_type() ) : ?>
+	<header class="entry-header">
+		<?php if ( 'post' === get_post_type() ) : ?>
 			<div class="entry-meta">
-				<h5 class="entry-date"><?php nisarg_posted_on(); ?></h5>
+				<?php
+				echo twentyseventeen_time_link();
+				twentyseventeen_edit_link();
+				?>
 			</div><!-- .entry-meta -->
-			<?php endif; ?>
-		</header><!-- .entry-header -->
+		<?php elseif ( 'page' === get_post_type() && get_edit_post_link() ) : ?>
+			<div class="entry-meta">
+				<?php twentyseventeen_edit_link(); ?>
+			</div><!-- .entry-meta -->
+		<?php endif; ?>
 
-		<div class="entry-summary post_excerpt">
-			<?php echo excerpt(25); ?>
-		</div><!-- .entry-summary -->
+		<?php
+		if ( is_front_page() && ! is_home() ) {
 
-		<footer class="entry-footer">
-			<?php nisarg_entry_footer(); ?>
-		</footer><!-- .entry-footer -->
+			// The excerpt is being displayed within a front page section, so it's a lower hierarchy than h2.
+			the_title( sprintf( '<h3 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h3>' );
+		} else {
+			the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' );
+		}
+		?>
+	</header><!-- .entry-header -->
 
-	</div>
+	<div class="entry-summary">
+		<?php the_excerpt(); ?>
+	</div><!-- .entry-summary -->
 
-	
-</article><!-- #post-## -->
+</article><!-- #post-<?php the_ID(); ?> -->
